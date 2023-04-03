@@ -5,4 +5,4 @@ export interface Item {
     price: number,
     amount: number,
     vendor: string
-};
+}

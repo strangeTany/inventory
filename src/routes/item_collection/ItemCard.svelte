@@ -24,6 +24,9 @@
     text-decoration: none;
     color: #2e2e2e
 }
+.card :hover{
+    color: #ca7a12;
+}
 .card :active{
     transform: scale(.98);
 }
@@ -45,7 +48,7 @@
 .card_footer{
     display: flex;
     transform: inherit;
-    bottom: 0%;
+    bottom: 0;
     justify-content: space-between;
 }
 .item_description{
