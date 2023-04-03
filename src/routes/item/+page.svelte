@@ -1,6 +1,8 @@
 <script lang="ts">
     import type {Item} from '../item'
-    let item: Item = {name: "Hammer", id: "001", description: "Good hammer", price: 100, amount: 2, vendor: "Vendor1"}
+    let item: Item = {
+        name: "Hammer", id: "001", description: "Good hammer", price: 100, amount: 2, vendor: "Vendor1"
+    }
 </script>
 <svelte:head>
 	<title>{item.name}</title>
