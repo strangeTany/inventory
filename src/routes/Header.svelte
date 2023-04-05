@@ -18,8 +18,8 @@
 			<li aria-current={$page.url.pathname === '/item_collection' ? 'page' : undefined}>
 				<a href="/item_collection">Item Collection</a>
 			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
+			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
+				<a href="/about">About</a>
 			</li>
 		</ul>
 		
