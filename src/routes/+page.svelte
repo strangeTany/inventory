@@ -17,7 +17,7 @@
 			</picture>
 		</span>
 
-		to our new<br />SvelteKit app<br /> "Inventory Management"
+		to our new SvelteKit app "Inventory Management"
 	</h1>
 
 </section>

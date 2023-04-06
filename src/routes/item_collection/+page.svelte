@@ -17,6 +17,8 @@
 	<meta name="description" content="Collection of items in stock" />
 </svelte:head>
 
+<h1>Items</h1>
+
 <div class="cards_grid">
 	{#each items as item}
         <ItemCard {item}></ItemCard>
