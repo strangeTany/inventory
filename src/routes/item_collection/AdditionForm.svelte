@@ -1,10 +1,11 @@
 <script lang="ts">
-    export let showAdditionForm; // boolean
-    let dialog; // HTMLDialogElement
+    export let showAdditionForm: boolean; // boolean
+    let dialog: HTMLDialogElement; // HTMLDialogElement
     $: if (dialog && showAdditionForm) dialog.showModal();
 
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <dialog
         bind:this={dialog}
         on:close={() => (showAdditionForm = false)}
