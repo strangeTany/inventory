@@ -2,15 +2,20 @@
 	import type {Item} from '../item'
     import ItemCard from './ItemCard.svelte'
 	import AdditionForm from "./AdditionForm.svelte";
+	import {collection, getDocs, Query, QueryDocumentSnapshot, QuerySnapshot} from "firebase/firestore"
+	import {db} from "../../lib/+firebase"
 
 	let showAdditionForm = false;
 	let removeFromList = false;
-	let items: Item[] = [
-			{name: "Hammer", id: "001", description: "Good hammer", price: 100, amount: 2, vendor: "Vendor1"},
-    	{name: "Hammer", id: "002", description: "Good hammer, almost fantastic hammer", price: 100, amount: 2, vendor: "Vendor1"},
-    	{name: "Hammer", id: "003", description: "Good hammer", price: 100, amount: 2, vendor: "Vendor1"},
-		{name: "Pizza", id: "007", description: "Good pizza great pizza", price: 100, amount: 300, vendor: "Vendor1"},
-    	{name: "Hammer", id: "005", description: "Good hammer", price: 100, amount: 2, vendor: "Vendor1"}];
+
+	let items: Item[] = [];
+	async function getDB() {
+		const collectionRef: Query<any> = collection(db, "items");
+		const collectionSnap: QuerySnapshot<Item> = await getDocs(collectionRef);
+		items = collectionSnap.docs.map((doc: QueryDocumentSnapshot<Item>) => Object.assign(doc.data(), {id:doc.id}))
+			console.log(items)
+	}
+	getDB();
 </script>
 <svelte:head>
 	<title>Item Collection</title>

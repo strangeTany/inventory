@@ -24,9 +24,9 @@
     text-decoration: none;
     color: #2e2e2e
 }
-.card :hover{
-    color: #ca7a12;
-}
+/* .card :hover{
+    transform: scale(.98);
+} */
 .card :active{
     transform: scale(.98);
 }
