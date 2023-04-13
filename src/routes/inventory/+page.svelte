@@ -8,6 +8,7 @@
 	let showAdditionForm = false;
 	let removeFromList = false;
 
+	
 	let items: Item[] = [];
 	async function getDB() {
 		const collectionRef: Query<any> = collection(db, "items");
@@ -20,11 +21,11 @@
 	
 </script>
 <svelte:head>
-	<title>Item Collection</title>
+	<title>Inventory</title>
 	<meta name="description" content="Collection of items in stock" />
 </svelte:head>
 
-<h1>Items</h1>
+<!-- <h1>Items</h1> -->
 
 <div class="cards_grid">
 	{#each items as item}
