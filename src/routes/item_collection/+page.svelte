@@ -2,7 +2,7 @@
 	import type {Item} from '../item'
     import ItemCard from './ItemCard.svelte'
 	import AdditionForm from "./AdditionForm.svelte";
-	import {collection, getDocs, Query, QueryDocumentSnapshot, QuerySnapshot} from "firebase/firestore"
+	import {collection, Query, onSnapshot} from "firebase/firestore"
 	import {db} from "../../lib/+firebase"
 
 	let showAdditionForm = false;
@@ -11,11 +11,13 @@
 	let items: Item[] = [];
 	async function getDB() {
 		const collectionRef: Query<any> = collection(db, "items");
-		const collectionSnap: QuerySnapshot<Item> = await getDocs(collectionRef);
-		items = collectionSnap.docs.map((doc: QueryDocumentSnapshot<Item>) => Object.assign(doc.data(), {id:doc.id}))
-			console.log(items)
+		onSnapshot(collectionRef, (collectionSnap) => {
+    		items = collectionSnap.docs.map(doc => Object.assign(doc.data())) as Item[];
+		});
+		console.log(items)
 	}
 	getDB();
+	
 </script>
 <svelte:head>
 	<title>Item Collection</title>
