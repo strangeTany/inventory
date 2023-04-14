@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {Item} from '../item'
-    import ItemCard from './ItemCard.svelte'
-	import AdditionForm from "./AdditionForm.svelte";
+    import ItemCard from "../../lib/components/ItemCard.svelte";
+	import AdditionForm from "../../lib/components/AdditionForm.svelte";
 	import {collection, Query, onSnapshot} from "firebase/firestore"
 	import {db} from "../../lib/+firebase"
 
