@@ -1,5 +1,6 @@
 <script lang="ts">
     import type {Item} from '../item'
+    export const prerender = true;
     let item: Item = {
         name: "Hammer", id: "001", description: "Good hammer", price: 100, amount: 2, vendor: "Vendor1"
     }

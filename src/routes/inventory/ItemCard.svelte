@@ -1,4 +1,5 @@
 <script lang="ts">
+    export const prerender = true;
 	import type { Item } from "../item";
     export let item: Item;
 </script>

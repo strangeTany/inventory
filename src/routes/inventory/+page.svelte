@@ -4,6 +4,7 @@
 	import AdditionForm from "./AdditionForm.svelte";
 	import {collection, Query, onSnapshot} from "firebase/firestore"
 	import {db} from "../../lib/+firebase"
+	export const prerender = true;
 
 	let showAdditionForm = false;
 	let removeFromList = false;
