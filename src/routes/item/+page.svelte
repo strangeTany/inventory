@@ -3,19 +3,23 @@
     let item: Item = {
         name: "Hammer", id: "001", description: "Good hammer", price: 100, amount: 2, vendor: "Vendor1"
     }
+
+    function decrement() {
+        if (item.amount > 0) {
+            item.amount -= 1;
+        }
+    }
+
+    function increment() {
+        item.amount += 1;
+    }
 </script>
+
 <svelte:head>
 	<title>{item.name}</title>
 	<meta name="description" content="Collection of items in stock" />
 </svelte:head>
 
-<!-- <div class="cards_grid">
-    <h1>{item.name}</h1>
-    <p>{item.description}</p>
-    <p>{item.price}</p>
-    <p>{item.amount}</p>
-    <p>{item.vendor}</p> 
-</div> -->
 <div class="card_page">
     <a class="back_button" href="../item_collection">Back</a>
     <div class="card_content">
@@ -23,11 +27,14 @@
         <p class="item_description">{item.description}</p>
         <div class="item_info">
             <p class="item_price">{item.price}</p>
-            <p class="item_amount">In Stock: {item.amount}</p>
+            <div class="item_amount">
+                <button on:click={decrement}>-</button>
+                <p>In Stock: {item.amount}</p>
+                <button on:click={increment}>+</button>
+            </div>
             <p class="item_vendor">{item.vendor}</p>
         </div>
     </div>
-
 </div>
 
 <style>
@@ -88,14 +95,28 @@
 }
 
 .item_amount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0;
     font-size: 20px;
 }
 
-.item_vendor {
-    margin: 0;
-    font-size: 20px;
-    font-style: italic;
+.item_amount button {
+    margin: 0 10px;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #2e2e2e;
+    color: #2e2e2e;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.item_amount button:hover {
+    background-color: #2e2e2e;
 }
 
 .back_button {
