@@ -22,14 +22,16 @@
 				Name Surname
 			</div>
 			<span class="loren">
-                    Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.
-                </span>
+				Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.
+			</span>
 			<div>
 				<div class="profile">
 					<img src={logo} class="pictures-us" alt="pokemon-two" />
 					Name Surname
 				</div>
-				<span class="loren">Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.</span>
+				<span class="loren"
+					>Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.</span
+				>
 			</div>
 		</div>
 
@@ -38,19 +40,20 @@
 				<img src={logo} class="pictures-us" alt="pokemon-three" />
 				Name Surname
 			</div>
-			<span class="loren">Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.</span>
+			<span class="loren"
+				>Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.</span
+			>
 			<div>
 				<div class="profile">
 					<img src={logo} class="pictures-us" alt="pokemon-four" />
 					Name Surname
 				</div>
 				<span class="loren">
-                        Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.
-                    </span>
+					Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.
+				</span>
 			</div>
 		</div>
 	</div>
-
 </div>
 
 <style>
@@ -81,7 +84,6 @@
 		gap: 8px;
 		/*width: 550px;*/
 		height: 80px;
-
 	}
 
 	.loren {
@@ -91,5 +93,4 @@
 		height: 50px;
 		/*line-height: 28px;*/
 	}
-
 </style>

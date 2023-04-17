@@ -19,7 +19,6 @@
 
 		to our new SvelteKit app "Inventory Management"
 	</h1>
-
 </section>
 
 <style>

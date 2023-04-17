@@ -1,9 +1,12 @@
 <script>
-	import Header from "../lib/components/Header.svelte";
+	import Header from '../lib/components/Header.svelte';
 	import './styles.css';
-	
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&family=Rubik:wght@300;400;500&display=swap" rel="stylesheet">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&family=Rubik:wght@300;400;500&display=swap"
+	rel="stylesheet"
+/>
 <div class="app">
 	<Header />
 
@@ -21,9 +24,9 @@
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
-		font-family:'Rubik', sans-serif;
+		font-family: 'Rubik', sans-serif;
 		letter-spacing: 0.02em;
-		color: #3C4044;
+		color: #3c4044;
 	}
 
 	main {
@@ -45,7 +48,6 @@
 		padding: 12px;
 		opacity: 50%;
 	}
-
 
 	@media (min-width: 480px) {
 		footer {

@@ -4,10 +4,11 @@
 	import github from '$lib/images/github.svg';
 	export const prerender = true;
 </script>
+
 <header>
 	<div class="corner">
-			<img src={logo} alt="Banana" /> 
-			<p> Banana</p>
+		<img src={logo} alt="Banana" />
+		<p>Banana</p>
 	</div>
 
 	<nav>
@@ -22,7 +23,6 @@
 				<a href="/about">About</a>
 			</li>
 		</ul>
-		
 	</nav>
 
 	<div class="corner">
@@ -59,7 +59,7 @@
 		height: 2.5em;
 		object-fit: contain;
 	}
-	.corner p{
+	.corner p {
 		margin-top: 1px;
 		margin-left: 7px;
 		font-size: 17pt;
@@ -70,7 +70,6 @@
 		display: flex;
 		justify-content: center;
 	}
-
 
 	ul {
 		position: relative;
@@ -97,10 +96,10 @@
 		height: 0;
 		position: absolute;
 		top: 0;
-		
+
 		left: calc(50% - var(--size));
 	}
-	li[aria-current='page']{
+	li[aria-current='page'] {
 		font-size: 15pt;
 		font-weight: 500;
 		padding-bottom: 2px;
@@ -113,7 +112,7 @@
 		padding: 0 0.5rem;
 		font: inherit;
 
-		color: #3C4044;
+		color: #3c4044;
 		text-decoration: none;
 		transition: color 0.2s linear;
 	}
