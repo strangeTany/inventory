@@ -2,6 +2,7 @@
 	import type {Item} from '../item'
     import ItemCard from "$lib/components/ItemCard.svelte";
 	import AdditionForm from "$lib/components/AdditionForm.svelte";
+	import addButton from "$lib/images/add.svg"
 	import {collection, Query, onSnapshot} from "firebase/firestore"
 	import {db} from "$lib/firebase"
 
@@ -33,14 +34,13 @@
     {/each}
 </div>
 
-<div class="add-item">
-	<button on:click={() => (showAdditionForm = true)}>
-		Add
-	</button>
-	<button on:click={() => (removeFromList = true)}>
+
+<button class="add_btn" on:click={() => (showAdditionForm = true)}>
+	<img class="add_img" src={addButton} alt="button to add new item">
+</button>
+	<!-- <button on:click={() => (removeFromList = true)}>
 		Remove
-	</button>
-</div>
+	</button> -->
 
 <AdditionForm bind:showAdditionForm>
 <!--	<h2> Add a new item </h2>-->
@@ -61,8 +61,24 @@
 <style>
     .cards_grid{
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: auto;
-        grid-gap: 1rem;
+		grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
+		grid-gap: 1rem;
     }
+	.add_btn{
+		position: fixed;
+		height: 9vh;
+		width: fit-content;
+		background: none;
+		border: none;
+		bottom: 8%;
+		right: 6%;
+	}
+	.add_img{
+		height: inherit;
+		width: inherit;
+	}
+	button:hover{
+		cursor: pointer;
+	}
+
 </style>

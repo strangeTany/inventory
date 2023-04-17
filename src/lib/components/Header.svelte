@@ -3,7 +3,6 @@
 	import logo from '$lib/images/banana-2.svg';
 	import github from '$lib/images/github.svg';
 </script>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500" rel="stylesheet">
 <header>
 	<div class="corner">
 			<img src={logo} alt="Banana" /> 
@@ -26,7 +25,7 @@
 	</nav>
 
 	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
+		<a href="https://github.com/strangeTany/inventory">
 			<img src={github} alt="GitHub" />
 		</a>
 	</div>

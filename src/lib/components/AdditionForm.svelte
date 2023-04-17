@@ -1,4 +1,5 @@
 <script lang="ts">
+    import cross from "$lib/images/cross.svg"
     export let showAdditionForm: boolean; // boolean
     let dialog: HTMLDialogElement; // HTMLDialogElement
     $: if (dialog && showAdditionForm) dialog.showModal();
@@ -13,23 +14,28 @@
 >
     <div on:click|stopPropagation>
         <slot name="header" />
-        <hr />
 <!--        <slot />-->
-        <h2> Add a new item </h2>
+        <h3> Add a new item </h3>
+        <!-- svelte-ignore a11y-autofocus -->
+        <button class="close_btn" autofocus on:click={() => dialog.close()}>
+            <img class="close_img" src="{cross}" alt="Close">
+        </button>
         <form>
-            <input type="text" id="name" placeholder="Item" required>
-            <input type="text" id="id" placeholder="Item's ID" required>
-            <input type="number" id="price" placeholder="Price" min="0" step="0.01" required>
-            <input type="number" id="integer" placeholder="Amount" pattern="[0-9]" min="1" step="1" required>
-            <input type="text" id="vendor" placeholder="Vendor's name" required>
-            <textarea id="message" rows="4" placeholder="Description" required></textarea>
+            <div class="form">
+                <input type="text" id="name" placeholder="Item" required>
+                <input type="text" id="id" placeholder="Item's ID" required>
+                <input type="number" id="price" placeholder="Price" min="0" step="0.01" required>
+                <input type="number" id="integer" placeholder="Amount" pattern="[0-9]" min="1" step="1" required>
+                <input type="text" id="vendor" placeholder="Vendor's name" required>
+                <textarea id="message" rows="4" placeholder="Description" required></textarea>
+            </div>
+            
             <div class="buttons">
-                <button type="reset">Reset</button> <button type="submit">Send</button>
+            <button class="form_button reset" type="reset">Reset</button> <button class="form_button submit" type="submit">Send</button>
             </div>
         </form>
-        <hr />
-        <!-- svelte-ignore a11y-autofocus -->
-        <button autofocus on:click={() => dialog.close()}>Close</button>
+        
+        
     </div>
 </dialog>
 
@@ -38,17 +44,19 @@
     dialog {
         width: 50%;
         max-width: 900px;
-        border-radius: 0.2em;
+        border-radius: 0.5em;
         border: none;
         padding: 0;
-        background: aliceblue;
+        background: #e9e4cf;
         font-family: 'Quicksand', sans-serif;
     }
     dialog::backdrop {
         background: rgba(0, 0, 0, 0.3);
     }
     dialog > div {
-        padding: 1em;
+        padding-left: 3em;
+        padding-right: 3em;
+        padding-bottom: 3em;
     }
     dialog[open] {
         animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -73,37 +81,74 @@
         }
     }
 
-    form {
-        background-color: #e9e4cf;
+    .form {
+        background-color: aliceblue;
         display: flex;
         flex-direction: column;
         padding: 2vw 4vw;
-        /*max-width: 500px;*/
-        border-radius: 10px;
+        border:none;
+        border-radius: 0.3rem;
+        /* border-radius: 10px; */
         align-content: center;
     }
 
-    h2 {
+    h3 {
         text-align: center;
-        color: #ca7a12;
-        margin-bottom: 20px;
+        font-weight: 500;
+        font-size: large;
+        /* margin-bottom: 20px; */
     }
+    .close_btn{
+		position: absolute;
+		height: 2vh;
+		width: fit-content;
+		background: none;
+		border: none;
+        top: 2.6%;
+        right: 2.6%;
+	}
+    .close_btn:hover{
+        cursor: pointer;
+
+    }
+    .close_img{
+		height: inherit;
+		width: inherit;
+        --color_fill: #c69775;
+	}
+
+    .close_btn:active{
+        transform: scale(.8);
+	}
 
     form input, textarea {
-        border: 0;
+        border-width: 1px;
+        border-color: #c69775;
+        border-style: solid;
         margin: 10px 0;
         padding: 20px;
-        outline: none;
-        background: aliceblue;
+        background-color: rgb(237, 246, 253);
+        /* outline: none; */
+        /* background: aliceblue; */
         font-size: 16px;
         border-radius: 10px;
         resize: vertical;
     }
+    form input:focus, textarea:focus{
+        outline: none;
+        border: 2px solid #da9341;
 
-    form button {
-        background: #f8f4ed;
-        color: #ca7a12;
-        border: 1px solid #ca7a12;
+    }
+
+    form input:invalid:focus, textarea:invalid:focus {
+        background: #ffe4dc;
+        border: 2px solid #dc572f;
+        outline: none;
+        
+    }
+
+    
+    .form_button {
         padding: 15px;
         font-size: 1rem;
         outline: none;
@@ -119,11 +164,27 @@
         display: flex;
         flex-direction: row;
         gap: 1vh;
+        
+    }
+    .reset {
+        background: #ffe4dc;
+        color: #dc572f;
+        border: 1px solid #dc572f;
+    }
+    .submit {
+        background: #e3f4ff;
+        color: #49abed;
+        border: 1px solid #49abed;
     }
 
-    form button:hover {
-        border: 1px solid #ca7a12;
-        background: #ca7a12;
+    .reset:hover {
+        border: 1px solid #db643f;
+        background: #db643f;
+        color: white;
+    }
+    .submit:hover {
+        border: 1px solid #91cbf2;
+        background: #91cbf2;
         color: white;
     }
 </style>
