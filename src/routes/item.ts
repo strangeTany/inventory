@@ -1,6 +1,6 @@
 export interface Item {
     name: string,
-    id: string,
+    id?: string,
     description: string,
     price: number,
     amount: number,
