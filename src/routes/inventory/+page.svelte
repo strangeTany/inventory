@@ -1,9 +1,9 @@
 <script lang="ts">
 	import type {Item} from '../item'
-    import ItemCard from "../../lib/components/ItemCard.svelte";
-	import AdditionForm from "../../lib/components/AdditionForm.svelte";
+    import ItemCard from "$lib/components/ItemCard.svelte";
+	import AdditionForm from "$lib/components/AdditionForm.svelte";
 	import {collection, Query, onSnapshot} from "firebase/firestore"
-	import {db} from "../../lib/+firebase"
+	import {db} from "$lib/firebase"
 
 	let showAdditionForm = false;
 	let removeFromList = false;
