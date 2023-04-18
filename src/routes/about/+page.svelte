@@ -57,6 +57,9 @@
 </div>
 
 <style>
+	h1 {
+		font-weight: 400;
+	}
 	.container {
 		display: grid;
 		gap: 1rem;

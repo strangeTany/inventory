@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Item } from '../item';
+	import cross from '$lib/images/cross.svg';
 	export const prerender = true;
 	let item: Item = {
 		name: 'Hammer',
@@ -25,124 +26,130 @@
 	<title>{item.name}</title>
 	<meta name="description" content="Collection of items in stock" />
 </svelte:head>
-
-<div class="card_page">
-	<a class="back_button" href="../item_collection">Back</a>
+<div class="page_content">
+	<a class="back_button" href="../inventory">
+		<img class="back_img" src={cross} alt="Close" />
+	</a>
 	<div class="card_content">
 		<h1 class="item_title">{item.name}</h1>
-		<p class="item_description">{item.description}</p>
-		<div class="item_info">
-			<p class="item_price">{item.price}</p>
-			<div class="item_amount">
-				<button on:click={decrement}>-</button>
-				<p>In Stock: {item.amount}</p>
-				<button on:click={increment}>+</button>
-			</div>
-			<p class="item_vendor">{item.vendor}</p>
+		<hr />
+		<div class="description_box">
+			<p>Item description:</p>
+			<p class="item_description">{item.description}</p>
+		</div>
+		<div class="info_box">
+			<p class="item_price">Price: {item.price}$</p>
+			<p class="item_vendor">Vendor: {item.vendor}</p>
+		</div>
+
+		<div class="item_amount">
+			<button on:click={decrement}>-</button>
+			<p>In Stock: {item.amount}</p>
+			<button on:click={increment}>+</button>
 		</div>
 	</div>
 </div>
 
 <style>
-	.card_page {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 100vh;
-		background-color: #f7f7f7;
+	hr {
+		width: 70%;
+		border-width: 2px;
 	}
-
 	.card_content {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+	}
+	.page_content {
+		position: relative;
 		width: 80%;
 		max-width: 800px;
 		height: 80%;
 		max-height: 600px;
-		background-color: white;
-		border-radius: 10px;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		align-self: center;
+		background-color: aliceblue;
+		border-radius: 0.5rem;
+		box-shadow: 0 2px 4px rgb(206, 178, 154);
 		padding: 30px;
-		text-align: center;
 	}
 
 	.item_title {
-		margin: 0;
-		font-size: 36px;
-		font-weight: bold;
+		font-weight: 300;
 		text-align: center;
 	}
 
-	.item_description {
-		margin: 20px 0;
-		font-size: 24px;
-	}
-
-	.item_image {
-		width: 200px;
-		height: 200px;
-		object-fit: contain;
-		margin: 20px 0;
-	}
-
-	.item_info {
+	.description_box {
 		display: flex;
+		flex-direction: row;
+		font-weight: 400;
+		font-size: 1.4em;
+	}
+	.item_description {
+		margin-left: 20px;
+		font-weight: 300;
+	}
+	.info_box {
+		display: flex;
+		flex-direction: row;
 		justify-content: space-between;
-		align-items: center;
-		width: 100%;
+		font-size: 1.2em;
+		vertical-align: middle;
 	}
 
 	.item_price {
-		margin: 0;
-		font-size: 24px;
-		font-weight: bold;
+		font-weight: 400;
+		font-size: 1.2em;
+		margin-top: 0.1em;
+		vertical-align: middle;
+	}
+
+	.item_vendor {
+		vertical-align: middle;
+		height: fit-content;
 	}
 
 	.item_amount {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin: 0;
 		font-size: 20px;
 	}
 
 	.item_amount button {
+		height: 30px;
+		width: 30px;
 		margin: 0 10px;
-		padding: 5px;
-		background-color: #fff;
-		border: 1px solid #2e2e2e;
-		color: #2e2e2e;
+		border: 1px solid #c69775;
+		background-color: #eee9d85a;
+		color: #c69775;
 		font-size: 18px;
-		font-weight: bold;
-		border-radius: 5px;
+		font-weight: 500;
+		border-radius: 100%;
 		cursor: pointer;
 		transition: all 0.2s ease;
 	}
 
 	.item_amount button:hover {
-		background-color: #2e2e2e;
+		background-color: #c69775;
+		border-color: #c69775;
+		color: aliceblue;
 	}
 
 	.back_button {
 		position: absolute; /* position button absolute */
-		top: 100px;
-		left: 60px;
-		margin-top: 20px;
-		padding: 10px 20px;
-		background-color: #fff;
-		border: 2px solid #2e2e2e;
-		color: #2e2e2e;
-		font-size: 18px;
-		font-weight: bold;
-		border-radius: 5px;
-		cursor: pointer;
-		transition: all 0.2s ease;
+		top: 1.7vw;
+		right: 1.7vw;
+		height: 3vh;
+		width: fit-content;
+	}
+	.back_img {
+		height: inherit;
+		width: inherit;
 	}
 
 	.back_button:hover {
-		background-color: #2e2e2e;
-		color: #fff;
+		cursor: pointer;
+	}
+	.back_button:active {
+		transform: scale(0.94);
 	}
 </style>

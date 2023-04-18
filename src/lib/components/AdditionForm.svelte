@@ -14,7 +14,7 @@
 	<div on:click|stopPropagation>
 		<slot name="header" />
 		<!--        <slot />-->
-		<h3>Add a new item</h3>
+		<h2>Add a new item</h2>
 		<!-- svelte-ignore a11y-autofocus -->
 		<button class="close_btn" autofocus on:click={() => dialog.close()}>
 			<img class="close_img" src={cross} alt="Close" />
@@ -93,15 +93,12 @@
 		padding: 2vw 4vw;
 		border: none;
 		border-radius: 0.3rem;
-		/* border-radius: 10px; */
 		align-content: center;
 	}
 
-	h3 {
+	h2 {
 		text-align: center;
 		font-weight: 500;
-		font-size: large;
-		/* margin-bottom: 20px; */
 	}
 	.close_btn {
 		position: absolute;
@@ -122,7 +119,7 @@
 	}
 
 	.close_btn:active {
-		transform: scale(0.8);
+		transform: scale(0.9);
 	}
 
 	form input,

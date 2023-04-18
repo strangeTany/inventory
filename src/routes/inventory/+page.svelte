@@ -78,4 +78,7 @@
 	button:hover {
 		cursor: pointer;
 	}
+	button:active {
+		transform: scale(0.94);
+	}
 </style>
