@@ -1,6 +1,5 @@
 <script lang="ts">
 	import logo from '$lib/images/banana.svg';
-	export const prerender = true;
 </script>
 
 <svelte:head>

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Item } from '../item';
 	import cross from '$lib/images/cross.svg';
-	export const prerender = true;
 	let item: Item = {
 		name: 'Hammer',
 		id: '001',

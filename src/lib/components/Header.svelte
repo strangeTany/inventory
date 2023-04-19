@@ -2,7 +2,6 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/banana-2.svg';
 	import github from '$lib/images/github.svg';
-	export const prerender = true;
 </script>
 
 <header>

@@ -4,7 +4,6 @@
 	import AdditionForm from '$lib/components/AdditionForm.svelte';
 	import addButton from '$lib/images/add.svg';
 	import { collection, Query, onSnapshot } from 'firebase/firestore';
-	export const prerender = true;
 	import { db } from '$lib/firebase';
 
 	let showAdditionForm = false;

@@ -1,5 +1,4 @@
 <script lang="ts">
-	export const prerender = true;
 	import type { Item } from '../../routes/item';
 	export let item: Item;
 </script>
