@@ -12,7 +12,7 @@
 
 	<div class="container">
 		<div>
-			<p>Banana — service for inventory management.</p>
+			<p class="app_description">Banana — service for inventory management.</p>
 		</div>
 
 		<div>
@@ -29,8 +29,8 @@
 					Name Surname
 				</div>
 				<span class="loren"
-					>Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.</span
-				>
+					>Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.
+				</span>
 			</div>
 		</div>
 
@@ -40,8 +40,8 @@
 				Name Surname
 			</div>
 			<span class="loren"
-				>Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.</span
-			>
+				>Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.
+			</span>
 			<div>
 				<div class="profile">
 					<img src={logo} class="pictures-us" alt="pokemon-four" />
@@ -66,7 +66,7 @@
 		margin-left: 30px;
 		width: 90%;
 		align-content: center;
-		justify-content: flex-start;
+		justify-content: space-between;
 		align-items: normal;
 	}
 
@@ -86,13 +86,19 @@
 		gap: 8px;
 		/*width: 550px;*/
 		height: 80px;
+		font-size: 1.4em;
 	}
 
 	.loren {
-		font-size: 20px;
+		font-size: 1.1em;
 		font-weight: 400;
 		width: 530px;
 		height: 50px;
 		/*line-height: 28px;*/
+	}
+	.app_description {
+		font-size: 1.6em;
+		font-weight: 300;
+		margin-right: 2em;
 	}
 </style>

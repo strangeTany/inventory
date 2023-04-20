@@ -1,21 +1,29 @@
 <script lang="ts">
 	import type { Item } from '../../routes/item';
+	import DeleteCard from './DeleteCard.svelte';
 	export let item: Item;
 </script>
 
-<a class="card" href="../item?id={item.id}">
-	<span class="card_content">
-		<h3 class="item_title">{item.name}</h3>
-		<p class="item_description">{item.description}</p>
-		<span class="card_footer">
-			<p class="item_price">{item.price}$</p>
-			<p class="item_amount">{item.amount}</p>
+<div class="card_container">
+	<a class="card" href="../item?id={item.id}">
+		<span class="card_content">
+			<h3 class="item_title">{item.name}</h3>
+			<p class="item_description">{item.description}</p>
+			<span class="card_footer">
+				<p class="item_price">{item.price}$</p>
+				<p class="item_amount">{item.amount}</p>
+			</span>
 		</span>
-	</span>
-</a>
+	</a>
+	<DeleteCard />
+</div>
 
 <style>
+	.card_container {
+		position: relative;
+	}
 	.card {
+		position: relative;
 		display: grid;
 		background-color: aliceblue;
 		padding-bottom: 10px;
