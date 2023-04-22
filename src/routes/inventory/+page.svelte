@@ -41,18 +41,6 @@
 	</button> -->
 
 <AdditionForm bind:showAdditionForm>
-	<!--	<h2> Add a new item </h2>-->
-	<!--		<form>-->
-	<!--			<input type="text" id="name" placeholder="Item" required>-->
-	<!--			<input type="text" id="id" placeholder="Item's ID" required>-->
-	<!--			<input type="number" id="price" placeholder="Price" min="0" step="0.01" required>-->
-	<!--			<input type="number" id="integer" placeholder="Amount" pattern="[0-9]" min="1" step="1" required>-->
-	<!--			<input type="text" id="vendor" placeholder="Vendor's name" required>-->
-	<!--			<textarea id="message" rows="4" placeholder="Description" required></textarea>-->
-	<!--			<div class="buttons">-->
-	<!--				<button type="reset">Reset</button> <button type="submit">Send</button>-->
-	<!--			</div>-->
-	<!--		</form>-->
 </AdditionForm>
 
 <style>
