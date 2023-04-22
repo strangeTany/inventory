@@ -1,5 +1,8 @@
 <script lang="ts">
-	import logo from '$lib/images/banana.svg';
+	import Tanya from '$lib/images/tatiana-ivshina.png';
+	import Sasha from '$lib/images/aleksandr-golovin.png';
+	import Liza from '$lib/images/elizaveta-semenova.png';
+	import Pasha from '$lib/images/pavel-baharuev.png';
 </script>
 
 <svelte:head>
@@ -12,44 +15,61 @@
 
 	<div class="container">
 		<div>
-			<p class="app_description">Banana — service for inventory management.</p>
+			<p class="app_description">Banana — service for inventory management. </p>
+			<p class="app_description">Here you can find, check and edit different items if you need.</p>
 		</div>
 
 		<div>
 			<div class="profile">
-				<img src={logo} class="pictures-us" alt="pokemon-one" />
-				Name Surname
+				<img src={Tanya} class="pictures-us" alt="tatiana" />
+				Tatiana Ivshina
 			</div>
-			<span class="loren">
-				Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.
-			</span>
+			<div class="loren">
+				<ul>
+					<li>Team leader.</li>
+					<li>Front-end developer.</li>
+					<li>Designer and a cinnamon roll.</li>
+				</ul>
+			</div>
 			<div>
 				<div class="profile">
-					<img src={logo} class="pictures-us" alt="pokemon-two" />
-					Name Surname
+					<img src={Sasha} class="pictures-us" alt="alexander" />
+					Aleksandr Golovin
 				</div>
-				<span class="loren"
-					>Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.
-				</span>
+				<div class="loren">
+					<ul>
+						<li>Data Science.</li>
+						<li>Front-end developer.</li>
+						<li>It's me, hi, I'm your solution it's me.</li>
+				</ul>
+				</div>
 			</div>
 		</div>
 
 		<div>
 			<div class="profile">
-				<img src={logo} class="pictures-us" alt="pokemon-three" />
-				Name Surname
+				<img src={Liza} class="pictures-us" alt="elizaveta" />
+				Elizaveta Semenova
 			</div>
-			<span class="loren"
-				>Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.
-			</span>
+			<div class="loren">
+				<ul>
+					<li>Front-end developer.</li>
+					<li>Cyber Security track.</li>
+					<li>Can be your meme moderator.</li>
+				</ul>
+			</div>
 			<div>
 				<div class="profile">
-					<img src={logo} class="pictures-us" alt="pokemon-four" />
-					Name Surname
+					<img src={Pasha} class="pictures-us" alt="pavel" />
+					Pavel Baharuev
 				</div>
-				<span class="loren">
-					Lorem ipsum dolor sit amet consectetur. Cras eu orci et adipiscing cursus.
-				</span>
+				<div class="loren">
+					<ul>
+						<li>Front-end developer.</li>
+						<li>Learning Software Development.</li>
+						<li>Stonks-person.</li>
+				</ul>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -61,10 +81,10 @@
 	}
 	.container {
 		display: grid;
-		gap: 1rem;
-		grid-template-columns: repeat(3, 1fr);
+		/*gap: 1rem;*/
+		grid-template-columns: repeat(3, 2fr);
 		margin-left: 30px;
-		width: 90%;
+		width: 95%;
 		align-content: center;
 		justify-content: space-between;
 		align-items: normal;
@@ -92,9 +112,9 @@
 	.loren {
 		font-size: 1.1em;
 		font-weight: 400;
-		width: 530px;
-		height: 50px;
-		/*line-height: 28px;*/
+		/*width: 530px;*/
+		/*height: 50px;*/
+		line-height: 28px;
 	}
 	.app_description {
 		font-size: 1.6em;
