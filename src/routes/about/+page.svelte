@@ -24,25 +24,25 @@
 				<img src={Tanya} class="pictures-us" alt="tatiana" />
 				Tatiana Ivshina
 			</div>
-			<span class="loren">
+			<div class="loren">
 				<ul>
 					<li>Team leader.</li>
 					<li>Front-end developer.</li>
 					<li>Designer and a cinnamon roll.</li>
 				</ul>
-			</span>
+			</div>
 			<div>
 				<div class="profile">
 					<img src={Sasha} class="pictures-us" alt="alexander" />
 					Aleksandr Golovin
 				</div>
-				<span class="loren">
+				<div class="loren">
 					<ul>
 						<li>Data Science.</li>
 						<li>Front-end developer.</li>
 						<li>It's me, hi, I'm your solution it's me.</li>
 				</ul>
-				</span>
+				</div>
 			</div>
 		</div>
 
@@ -51,25 +51,25 @@
 				<img src={Liza} class="pictures-us" alt="elizaveta" />
 				Elizaveta Semenova
 			</div>
-			<span class="loren">
+			<div class="loren">
 				<ul>
 					<li>Front-end developer.</li>
 					<li>Cyber Security track.</li>
 					<li>Can be your meme moderator.</li>
 				</ul>
-			</span>
+			</div>
 			<div>
 				<div class="profile">
 					<img src={Pasha} class="pictures-us" alt="pavel" />
 					Pavel Baharuev
 				</div>
-				<span class="loren">
+				<div class="loren">
 					<ul>
 						<li>Front-end developer.</li>
 						<li>Learning Software Development.</li>
 						<li>Stonks-person.</li>
 				</ul>
-				</span>
+				</div>
 			</div>
 		</div>
 	</div>
