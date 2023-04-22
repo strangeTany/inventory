@@ -3,8 +3,10 @@
 	import ItemCard from '$lib/components/ItemCard.svelte';
 	import AdditionForm from '$lib/components/AdditionForm.svelte';
 	import addButton from '$lib/images/add.svg';
-	import { collection, Query, onSnapshot } from 'firebase/firestore';
+	import type { QuerySnapshot, QueryDocumentSnapshot } from 'firebase/firestore';
+	import { collection, Query, onSnapshot, getDocs } from 'firebase/firestore';
 	import { db } from '$lib/firebase';
+	import { browser } from '$app/environment';
 
 	let showAdditionForm = false;
 	let removeFromList = false;
@@ -12,10 +14,17 @@
 	let items: Item[] = [];
 	async function getDB() {
 		const collectionRef: Query<any> = collection(db, 'items');
-		onSnapshot(collectionRef, (collectionSnap) => {
-			items = collectionSnap.docs.map((doc) => Object.assign(doc.data())) as Item[];
-		});
-		console.log(items);
+		if (browser) {
+			onSnapshot(collectionRef, (collectionSnap) => {
+				items = collectionSnap.docs.map((doc) => Object.assign(doc.data())) as Item[];
+			});
+		} else {
+			const collectionSnap: QuerySnapshot<Item> = await getDocs(collectionRef);
+			items = collectionSnap.docs.map((doc: QueryDocumentSnapshot<Item>) =>
+				Object.assign(doc.data(), { id: doc.id })
+			);
+			console.log(items);
+		}
 	}
 	getDB();
 </script>
@@ -28,9 +37,11 @@
 <!-- <h1>Items</h1> -->
 
 <div class="cards_grid">
-	{#each items as item}
-		<ItemCard {item} />
-	{/each}
+	{#if items}
+		{#each items as item}
+			<ItemCard {item} />
+		{/each}
+	{/if}
 </div>
 
 <button class="add_btn" on:click={() => (showAdditionForm = true)}>
