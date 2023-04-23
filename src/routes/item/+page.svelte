@@ -1,6 +1,16 @@
 <script lang="ts">
 	import type { Item } from '../item';
 	import cross from '$lib/images/cross.svg';
+	import {
+		type QuerySnapshot,
+		type QueryDocumentSnapshot,
+		type DocumentSnapshot,
+		type DocumentReference,
+		doc,
+		getDoc
+	} from 'firebase/firestore';
+	import { collection, Query, onSnapshot, getDocs } from 'firebase/firestore';
+	import { db } from '$lib/firebase';
 	let item: Item = {
 		name: 'Hammer',
 		id: '001',
