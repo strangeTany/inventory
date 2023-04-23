@@ -3,6 +3,7 @@
 	import Sasha from '$lib/images/aleksandr-golovin.png';
 	import Liza from '$lib/images/elizaveta-semenova.png';
 	import Pasha from '$lib/images/pavel-baharuev.png';
+	export const prerender = true;
 </script>
 
 <svelte:head>
@@ -15,7 +16,7 @@
 
 	<div class="container">
 		<div>
-			<p class="app_description">Banana — service for inventory management. </p>
+			<p class="app_description">Banana — service for inventory management.</p>
 			<p class="app_description">Here you can find, check and edit different items if you need.</p>
 		</div>
 
@@ -41,7 +42,7 @@
 						<li>Data Science.</li>
 						<li>Front-end developer.</li>
 						<li>It's me, hi, I'm your solution it's me.</li>
-				</ul>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -68,7 +69,7 @@
 						<li>Front-end developer.</li>
 						<li>Learning Software Development.</li>
 						<li>Stonks-person.</li>
-				</ul>
+					</ul>
 				</div>
 			</div>
 		</div>

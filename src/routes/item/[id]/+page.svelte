@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Item } from '../item';
+	import type { Item } from '../../item';
 	import cross from '$lib/images/cross.svg';
 	import {
 		type QuerySnapshot,
@@ -11,9 +11,18 @@
 	} from 'firebase/firestore';
 	import { collection, Query, onSnapshot, getDocs } from 'firebase/firestore';
 	import { db } from '$lib/firebase';
+	import { onMount } from 'svelte';
+	export const prerender = true;
+	let param_id = 'loading';
+
+	onMount(() => {
+		const pathParts = window.location.pathname.split('/');
+		param_id = pathParts[pathParts.length - 1];
+	});
+
 	let item: Item = {
 		name: 'Hammer',
-		id: '001',
+		id: param_id,
 		description: 'Good hammer',
 		price: 100,
 		amount: 2,
@@ -29,6 +38,16 @@
 	function increment() {
 		item.amount += 1;
 	}
+
+	// async function getItemById(id: string): Promise<Item | null> {
+	// 	const docRef: DocumentReference<Item> = doc(db, 'items', id);
+	// 	const docSnap: DocumentSnapshot<Item> = await getDoc(docRef);
+	// 	if (docSnap.exists()) {
+	// 		return Object.assign(docSnap.data(), { id: docSnap.id }) as Item;
+	// 	} else {
+	// 		return null;
+	// 	}
+	// }
 </script>
 
 <svelte:head>
@@ -40,7 +59,7 @@
 		<img class="back_img" src={cross} alt="Close" />
 	</a>
 	<div class="card_content">
-		<h1 class="item_title">{item.name}</h1>
+		<h1 class="item_title">{item.name} ({param_id})</h1>
 		<hr />
 		<div class="description_box">
 			<p>Item description:</p>

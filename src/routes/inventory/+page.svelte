@@ -7,7 +7,7 @@
 	import { collection, Query, onSnapshot, getDocs } from 'firebase/firestore';
 	import { db } from '$lib/firebase';
 	import { browser } from '$app/environment';
-
+	export const prerender = true;
 	let showAdditionForm = false;
 	let removeFromList = false;
 
@@ -51,8 +51,7 @@
 		Remove
 	</button> -->
 
-<AdditionForm bind:showAdditionForm>
-</AdditionForm>
+<AdditionForm bind:showAdditionForm />
 
 <style>
 	.cards_grid {
