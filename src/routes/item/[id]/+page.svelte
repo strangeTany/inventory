@@ -2,17 +2,15 @@
 	import type { Item } from '../../item';
 	import cross from '$lib/images/cross.svg';
 	import {
-		type QuerySnapshot,
-		type QueryDocumentSnapshot,
-		type DocumentSnapshot,
-		type DocumentReference,
 		doc,
-		getDoc
+		getDoc,
+		DocumentReference,
+		QueryDocumentSnapshot,
+		DocumentSnapshot
 	} from 'firebase/firestore';
-	import { collection, Query, onSnapshot, getDocs } from 'firebase/firestore';
 	import { db } from '$lib/firebase';
+	import { collection, Query, onSnapshot, getDocs } from 'firebase/firestore';
 	import { onMount } from 'svelte';
-	export const prerender = true;
 	let param_id = 'loading';
 
 	onMount(() => {
@@ -20,14 +18,13 @@
 		param_id = pathParts[pathParts.length - 1];
 	});
 
-	let item: Item = {
-		name: 'Hammer',
-		id: param_id,
-		description: 'Good hammer',
-		price: 100,
-		amount: 2,
-		vendor: 'Vendor1'
-	};
+	let item: Item;
+	async function getItem(id: string) {
+		const docRef: DocumentReference<any> = doc(db, 'items', id);
+		const docSnap: DocumentSnapshot<Item> = await getDoc(docRef);
+		item = docSnap.data()!;
+	}
+	getItem(id);
 
 	function decrement() {
 		if (item.amount > 0) {
@@ -38,16 +35,6 @@
 	function increment() {
 		item.amount += 1;
 	}
-
-	// async function getItemById(id: string): Promise<Item | null> {
-	// 	const docRef: DocumentReference<Item> = doc(db, 'items', id);
-	// 	const docSnap: DocumentSnapshot<Item> = await getDoc(docRef);
-	// 	if (docSnap.exists()) {
-	// 		return Object.assign(docSnap.data(), { id: docSnap.id }) as Item;
-	// 	} else {
-	// 		return null;
-	// 	}
-	// }
 </script>
 
 <svelte:head>

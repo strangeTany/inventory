@@ -3,7 +3,6 @@
 	import Sasha from '$lib/images/aleksandr-golovin.png';
 	import Liza from '$lib/images/elizaveta-semenova.png';
 	import Pasha from '$lib/images/pavel-baharuev.png';
-	export const prerender = true;
 </script>
 
 <svelte:head>
