@@ -5,6 +5,14 @@
 	import {addDoc, collection, CollectionReference, DocumentReference} from "firebase/firestore";
 	import {db} from "../firebase";
 
+	interface Error {
+	name?: string;
+	description?: string;
+	price?: string;
+	amount?: string;
+	vendor?: string;
+}
+
 	export let showAdditionForm: boolean; // boolean
 	let dialog: HTMLDialogElement; // HTMLDialogElement
 	$: if (dialog && showAdditionForm) dialog.showModal();
@@ -16,31 +24,25 @@
 	}
 
 	const { form, handleChange, handleSubmit, handleReset, errors } = createForm({
-		initialValues: {
-			name: "",
-			price: "",
-			amount: "",
-			vendor: "",
-			message: ""
-		},
+		initialValues: {} as Item,
 		validate: values => {
-			let errs = {};
+			let errs: Error = {};
 			const for_price = new RegExp("\\d{1,3}(?:[.,]\\d{3})*(?:[.,]\\d{2})");
 			const for_amount = new RegExp("[1-9]\d*|0");
 			if (values.name === "") {
 				errs["name"] = "Name is required";
 			}
-			if  ((values.price === "") || !(for_price.test(values.price))) {
+			if  ((values.price === undefined) || !(for_price.test(values.price.toString()))) {
 				errs["price"] = "Invalid price: should be written as 00.00";
 			}
-			if  ((values.amount === "") || !(for_amount.test(values.amount))) {
+			if  ((values.amount === undefined) || !(for_amount.test(values.amount.toString()))) {
 				errs["amount"] = "Invalid amount of items";
 			}
 			if (values.vendor === "") {
 				errs["vendor"] = "Vendor'name is required";
 			}
-			if (values.message === "") {
-				errs["message"] = "Description is required";
+			if (values.description === "") {
+				errs["description"] = "Description is required";
 			}
 			return errs;
 		},
@@ -93,15 +95,18 @@
 				{/if}
 				<textarea
 						id="description" rows="3" placeholder="Description"
-						bind:value={$form.message} on:change={handleChange}></textarea>
-				{#if $errors.message}
-					<small>{$errors.message}</small>
+						bind:value={$form.description} on:change={handleChange}></textarea>
+				{#if $errors.description}
+					<small>{$errors.description}</small>
 				{/if}
 			</div>
 
 			<div class="buttons">
 				<button class="form_button reset" type="reset">Reset</button>
-				<button class="form_button submit" type="submit">Send</button>
+				<button class="form_button submit" type="submit"
+						on:close={() => (showAdditionForm = false)}
+						on:reset={handleReset}
+				>Send</button>
 			</div>
 		</form>
 	</div>
