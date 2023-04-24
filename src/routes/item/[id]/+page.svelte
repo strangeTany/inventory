@@ -6,7 +6,8 @@
 		getDoc,
 		DocumentReference,
 		QueryDocumentSnapshot,
-		DocumentSnapshot
+		DocumentSnapshot,
+		updateDoc
 	} from 'firebase/firestore';
 	import { db } from '$lib/firebase';
 	import { onMount } from 'svelte';
@@ -29,14 +30,28 @@
 		console.log(item);
 	}
 
+	async function saveItem() {
+		try {
+			const docRef: DocumentReference<any> = doc(db, 'items', param_id);
+			await updateDoc(docRef, {
+				amount: item.amount.toString()
+			});
+			console.log('Document successfully updated!');
+		} catch (error) {
+			console.error('Error updating document: ', error);
+		}
+	}
+
 	function decrement() {
 		if (item.amount > 0) {
 			item.amount -= 1;
 		}
+		saveItem();
 	}
 
 	function increment() {
 		item.amount += 1;
+		saveItem();
 	}
 </script>
 
