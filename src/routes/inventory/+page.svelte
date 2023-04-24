@@ -15,8 +15,11 @@
 		const collectionRef: Query<any> = collection(db, 'items');
 		if (browser) {
 			onSnapshot(collectionRef, (collectionSnap) => {
-				items = collectionSnap.docs.map((doc) => Object.assign(doc.data())) as Item[];
+				items = collectionSnap.docs.map((doc) =>
+					Object.assign(doc.data(), { id: doc.id })
+				) as Item[];
 			});
+			console.log(items);
 		} else {
 			const collectionSnap: QuerySnapshot<Item> = await getDocs(collectionRef);
 			items = collectionSnap.docs.map((doc: QueryDocumentSnapshot<Item>) =>

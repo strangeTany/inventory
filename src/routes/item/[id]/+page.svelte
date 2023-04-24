@@ -9,22 +9,24 @@
 		DocumentSnapshot
 	} from 'firebase/firestore';
 	import { db } from '$lib/firebase';
-	import { collection, Query, onSnapshot, getDocs } from 'firebase/firestore';
 	import { onMount } from 'svelte';
 	let param_id = 'loading';
 
 	onMount(() => {
 		const pathParts = window.location.pathname.split('/');
 		param_id = pathParts[pathParts.length - 1];
+		getItem(param_id);
 	});
 
-	let item: Item;
+	let item: Item = { name: '', amount: 0, description: '', price: 0, vendor: '' };
 	async function getItem(id: string) {
 		const docRef: DocumentReference<any> = doc(db, 'items', id);
+		console.log(docRef);
 		const docSnap: DocumentSnapshot<Item> = await getDoc(docRef);
+		console.log(2);
 		item = docSnap.data()!;
+		console.log(item);
 	}
-	getItem(id);
 
 	function decrement() {
 		if (item.amount > 0) {
@@ -46,7 +48,7 @@
 		<img class="back_img" src={cross} alt="Close" />
 	</a>
 	<div class="card_content">
-		<h1 class="item_title">{item.name} ({param_id})</h1>
+		<h1 class="item_title">{item.name}</h1>
 		<hr />
 		<div class="description_box">
 			<p>Item description:</p>

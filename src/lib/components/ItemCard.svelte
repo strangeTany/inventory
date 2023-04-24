@@ -9,7 +9,7 @@
 		<span class="card_content">
 			<h3 class="item_title">{item.name}</h3>
 			<p class="item_description">{item.description}</p>
-			<span class="card_fogit oter">
+			<span class="card_footer">
 				<p class="item_price">{item.price}$</p>
 				<p class="item_amount">{item.amount}</p>
 			</span>
