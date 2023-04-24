@@ -48,7 +48,9 @@
 		},
 		onSubmit: values => {
 			addToDB(values);
+			form.set({} as Item)
 			alert("You added new item to the stock.");
+
 		}
 	})
 </script>
