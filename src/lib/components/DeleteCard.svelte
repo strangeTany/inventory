@@ -3,7 +3,7 @@
 	import { collection, deleteDoc, doc, onSnapshot, Query } from 'firebase/firestore';
 	import { db } from '../firebase';
 	let param_id = 'loading';
-	export let itemID: string;
+	export let itemID: string | undefined;
 
 	async function deleteItem(id: string) {
 		await deleteDoc(doc(db, 'items', id));
@@ -12,7 +12,7 @@
 	function remove() {
 		let isDelete = confirm('Are you sure you want to delete this item?');
 		if (isDelete === true) {
-			deleteItem(itemID);
+			deleteItem(itemID!);
 			console.log('Removed');
 		}
 	}
