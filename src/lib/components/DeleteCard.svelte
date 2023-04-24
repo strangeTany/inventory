@@ -11,10 +11,8 @@
 
 	function remove() {
 		let isDelete = confirm("Are you sure you want to delete this item?");
-		alert(isDelete);
 		if (isDelete === true){
 			deleteItem(itemID);
-			alert("Deleted");
 			console.log("Removed");
 		}
 	}
