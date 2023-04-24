@@ -1,15 +1,40 @@
 <script lang="ts">
+	import {createForm} from "svelte-forms-lib";
 	import cross from '$lib/images/cross.svg';
+	import type {Item} from "../../routes/item";
+	import {addDoc, collection, CollectionReference, DocumentReference} from "firebase/firestore";
+	import {db} from "../firebase";
+
 	export let showAdditionForm: boolean; // boolean
 	let dialog: HTMLDialogElement; // HTMLDialogElement
 	$: if (dialog && showAdditionForm) dialog.showModal();
+
+
+	async function addToDB(newItem: Item) {
+		const collectionRef: CollectionReference<any> = collection(db, "items");
+		const collectionSnap: DocumentReference<Item> = await addDoc(collectionRef, newItem);
+	}
+
+	const { form, handleChange, handleSubmit, handleReset } = createForm({
+		initialValues: {
+			name: "",
+			price: "",
+			amount: "",
+			vendor: "",
+			message: ""
+		},
+		onSubmit: values => {
+			addToDB(values);
+			alert("You added new item to the stock.");
+		}
+	})
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <dialog
-	bind:this={dialog}
-	on:close={() => (showAdditionForm = false)}
-	on:click|self={() => dialog.close()}
+		bind:this={dialog}
+		on:close={() => (showAdditionForm = false)}
+		on:click|self={() => dialog.close()}
 >
 	<div on:click|stopPropagation>
 		<slot name="header" />
@@ -19,22 +44,23 @@
 		<button class="close_btn" autofocus on:click={() => dialog.close()}>
 			<img class="close_img" src={cross} alt="Close" />
 		</button>
-		<form>
+		<form on:submit={handleSubmit}>
 			<div class="form">
-				<input type="text" id="name" placeholder="Item" required />
-				<input type="text" id="id" placeholder="Item's ID" required />
-				<input type="number" id="price" placeholder="Price" min="0" step="0.01" required />
 				<input
-					type="number"
-					id="integer"
-					placeholder="Amount"
-					pattern="[0-9]"
-					min="1"
-					step="1"
-					required
-				/>
-				<input type="text" id="vendor" placeholder="Vendor's name" required />
-				<textarea id="message" rows="4" placeholder="Description" required />
+						type="text" id="name" placeholder="Item"
+						bind:value={$form.name} on:change={handleChange} required>
+				<input
+						type="number" id="price" placeholder="Price"
+						bind:value={$form.price} on:change={handleChange} min="0.01" step="0.01" required>
+				<input
+						type="number" id="amount" placeholder="Amount"
+						bind:value={$form.amount} on:change={handleChange} pattern="^[-+]?([1-9]\d*|0)$" min="1" step="1" required>
+				<input
+						type="text" id="vendor" placeholder="Vendor's name"
+						bind:value={$form.vendor} on:change={handleChange} required>
+				<textarea
+						id="description" rows="3" placeholder="Description"
+						bind:value={$form.message} on:change={handleChange} required></textarea>
 			</div>
 
 			<div class="buttons">
@@ -128,7 +154,7 @@
 		border-color: #c69775;
 		border-style: solid;
 		margin: 10px 0;
-		padding: 20px;
+		padding: 18px;
 		background-color: rgb(237, 246, 253);
 		/* outline: none; */
 		/* background: aliceblue; */
