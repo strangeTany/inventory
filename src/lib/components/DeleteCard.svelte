@@ -1,9 +1,27 @@
 <script lang="ts">
 	import bin from '$lib/images/bin.svg';
+	import {collection, deleteDoc, doc, onSnapshot, Query} from "firebase/firestore"
+	import {db} from "../firebase";
+	let param_id = 'loading';
+	export let itemID: string;
+
+	async function deleteItem(id: string){
+		await deleteDoc(doc(db, "items", id));
+	}
+
+	function remove() {
+		let isDelete = confirm("Are you sure you want to delete this item?");
+		alert(isDelete);
+		if (isDelete === true){
+			deleteItem(itemID);
+			alert("Deleted");
+			console.log("Removed");
+		}
+	}
 </script>
 
 <button class="delete_button">
-	<img class="delete_img" src={bin} alt="Delete" />
+	<img class="delete_img" src={bin} alt="Delete" on:click={() => remove()}/>
 </button>
 
 <style>

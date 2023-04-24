@@ -8,7 +8,6 @@
 	import { db } from '$lib/firebase';
 	import { browser } from '$app/environment';
 	let showAdditionForm = false;
-	let removeFromList = false;
 
 	let items: Item[] = [];
 	async function getDB() {

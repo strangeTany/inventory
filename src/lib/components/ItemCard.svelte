@@ -15,7 +15,7 @@
 			</span>
 		</span>
 	</a>
-	<DeleteCard />
+	<DeleteCard itemID={item.id}/>
 </div>
 
 <style>
