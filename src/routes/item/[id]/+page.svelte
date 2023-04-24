@@ -25,6 +25,7 @@
 		const docSnap: DocumentSnapshot<Item> = await getDoc(docRef);
 		console.log(2);
 		item = docSnap.data()!;
+		item.amount = parseInt(item.amount.toString(), 10);
 		console.log(item);
 	}
 
