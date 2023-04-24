@@ -15,13 +15,34 @@
 		const collectionSnap: DocumentReference<Item> = await addDoc(collectionRef, newItem);
 	}
 
-	const { form, handleChange, handleSubmit, handleReset } = createForm({
+	const { form, handleChange, handleSubmit, handleReset, errors } = createForm({
 		initialValues: {
 			name: "",
 			price: "",
 			amount: "",
 			vendor: "",
 			message: ""
+		},
+		validate: values => {
+			let errs = {};
+			const for_price = new RegExp("\\d{1,3}(?:[.,]\\d{3})*(?:[.,]\\d{2})");
+			const for_amount = new RegExp("[1-9]\d*|0");
+			if (values.name === "") {
+				errs["name"] = "Name is required";
+			}
+			if  ((values.price === "") || !(for_price.test(values.price))) {
+				errs["price"] = "Invalid price: should be written as 00.00";
+			}
+			if  ((values.amount === "") || !(for_amount.test(values.amount))) {
+				errs["amount"] = "Invalid amount of items";
+			}
+			if (values.vendor === "") {
+				errs["vendor"] = "Vendor'name is required";
+			}
+			if (values.message === "") {
+				errs["message"] = "Description is required";
+			}
+			return errs;
 		},
 		onSubmit: values => {
 			addToDB(values);
@@ -48,19 +69,34 @@
 			<div class="form">
 				<input
 						type="text" id="name" placeholder="Item"
-						bind:value={$form.name} on:change={handleChange} required>
+						bind:value={$form.name} on:change={handleChange}>
+				{#if $errors.name}
+					<small>{$errors.name}</small>
+				{/if}
 				<input
 						type="number" id="price" placeholder="Price"
-						bind:value={$form.price} on:change={handleChange} min="0.01" step="0.01" required>
+						bind:value={$form.price} on:change={handleChange} min="0.01" step="0.01">
+				{#if $errors.price}
+					<small>{$errors.price}</small>
+				{/if}
 				<input
 						type="number" id="amount" placeholder="Amount"
-						bind:value={$form.amount} on:change={handleChange} pattern="^[-+]?([1-9]\d*|0)$" min="1" step="1" required>
+						bind:value={$form.amount} on:change={handleChange} min="1" step="1">
+				{#if $errors.amount}
+					<small>{$errors.amount}</small>
+				{/if}
 				<input
 						type="text" id="vendor" placeholder="Vendor's name"
-						bind:value={$form.vendor} on:change={handleChange} required>
+						bind:value={$form.vendor} on:change={handleChange}>
+				{#if $errors.vendor}
+					<small>{$errors.vendor}</small>
+				{/if}
 				<textarea
 						id="description" rows="3" placeholder="Description"
-						bind:value={$form.message} on:change={handleChange} required></textarea>
+						bind:value={$form.message} on:change={handleChange}></textarea>
+				{#if $errors.message}
+					<small>{$errors.message}</small>
+				{/if}
 			</div>
 
 			<div class="buttons">
